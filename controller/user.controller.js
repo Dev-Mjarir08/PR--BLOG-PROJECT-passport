@@ -68,24 +68,21 @@ const userController = {
 
             const user = await User.findById(req.user._id);
 
-            // 1️⃣ check old password
             const isMatch = await bcrypt.compare(oldPassword, user.password);
 
             if (!isMatch) {
-                return  res.redirect("/user/dashboard");
+                return res.redirect("/user/dashboard");
             }
 
-            // 2️⃣ check new password match
             else if (newPassword !== confirmPassword) {
                 return res.redirect("/user/dashboard");
             }
 
             else {
 
-                // 4️⃣ hash new password
+
                 const hashPassword = await bcrypt.hash(newPassword, 10);
 
-                // 5️⃣ update password
                 user.password = hashPassword;
 
                 await user.save();
