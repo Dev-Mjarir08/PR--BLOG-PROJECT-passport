@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Dashboard — BlogSphere Analytics Overview.">
+    <title>Admin Dashboard — BlogSphere</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="../../assets/css/styles.css" rel="stylesheet">
+    <style>
+        .chart-placeholder {
+            background: var(--clr-surface);
+            border-radius: var(--radius-card);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .mini-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            height: 50px;
+        }
+
+        .mini-chart .bar {
+            width: 8px;
+            border-radius: 4px 4px 0 0;
+            background: var(--clr-gradient);
+            transition: var(--transition);
+        }
+
+        .mini-chart .bar:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard-wrapper">
+        <!-- ADMIN SIDEBAR -->
+        <aside class="dashboard-sidebar" style="background:linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);">
+            <div class="sidebar-brand"><i class="bi bi-shield-check me-2"></i>Admin Panel</div>
+            <div class="sidebar-section-title">Overview</div>
+            <nav class="sidebar-nav">
+                <a href="admin-dashboard.html" class="nav-link active"><i class="bi bi-speedometer2"></i> Dashboard</a>
+            </nav>
+            <div class="sidebar-section-title">Content</div>
+            <nav class="sidebar-nav">
+                <a href="admin-blogs.html" class="nav-link"><i class="bi bi-journal-text"></i> Manage Blogs</a>
+                <a href="admin-categories.html" class="nav-link"><i class="bi bi-folder"></i> Categories</a>
+                <a href="admin-comments.html" class="nav-link"><i class="bi bi-chat-dots"></i> Comments</a>
+            </nav>
+            <div class="sidebar-section-title">Users</div>
+            <nav class="sidebar-nav">
+                <a href="admin-users.html" class="nav-link"><i class="bi bi-people"></i> Manage Users</a>
+            </nav>
+            <div class="sidebar-section-title">Navigation</div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-link"><i class="bi bi-person"></i> User Dashboard</a>
+                <a href="../../index.html" class="nav-link"><i class="bi bi-house"></i> Back to Site</a>
+            </nav>
+        </aside>
+
+        <div class="dashboard-content">
+            <div class="dashboard-topbar">
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-ghost d-lg-none" onclick="toggleSidebar()"><i class="bi bi-list"
+                            style="font-size:22px;"></i></button>
+                    <div class="topbar-title">
+                        <h4>Admin Dashboard</h4>
+                        <p>Platform analytics and overview</p>
+                    </div>
+                </div>
+                <div class="topbar-actions">
+                    <span class="badge-custom badge-published"><i
+                            class="bi bi-shield-check me-1"></i>Administrator</span>
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Pratham" class="avatar avatar-md"
+                        alt="Admin">
+                </div>
+            </div>
+
+            <div class="dashboard-main">
+                <!-- Stats Row -->
+                <div class="row g-4 mb-4 fade-in">
+                    <div class="col-md-6 col-xl-3">
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background:rgba(102,126,234,0.1); color:var(--clr-primary);">
+                                <i class="bi bi-journal-text"></i>
+                            </div>
+                            <div class="stat-info" style="flex:1;">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h3 id="totalBlogs">0</h3>
+                                        <p>Total Blogs</p>
+                                    </div>
+                                    <div class="mini-chart">
+                                        <div class="bar" style="height:20px;"></div>
+                                        <div class="bar" style="height:35px;"></div>
+                                        <div class="bar" style="height:25px;"></div>
+                                        <div class="bar" style="height:40px;"></div>
+                                        <div class="bar" style="height:30px;"></div>
+                                        <div class="bar" style="height:50px;"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-change positive"><i class="bi bi-arrow-up"></i> +12 this month</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background:rgba(46,204,113,0.1); color:var(--clr-success);">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="totalUsers">0</h3>
+                                <p>Total Users</p>
+                                <div class="stat-change positive"><i class="bi bi-arrow-up"></i> +3 new users</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background:rgba(243,156,18,0.1); color:var(--clr-warning);">
+                                <i class="bi bi-eye"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="totalViews">0</h3>
+                                <p>Total Views</p>
+                                <div class="stat-change positive"><i class="bi bi-arrow-up"></i> +18% growth</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background:rgba(231,76,60,0.1); color:var(--clr-error);">
+                                <i class="bi bi-chat-dots"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="totalComments">0</h3>
+                                <p>Comments</p>
+                                <div class="stat-change positive"><i class="bi bi-arrow-up"></i> +8 pending</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    <!-- Traffic Chart Placeholder -->
+                    <div class="col-lg-8">
+                        <div class="card-custom p-4 fade-in">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h5 class="mb-0"><i class="bi bi-graph-up me-2 text-primary-custom"></i>Traffic Overview
+                                </h5>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-ghost btn-sm active">Week</button>
+                                    <button class="btn btn-ghost btn-sm">Month</button>
+                                    <button class="btn btn-ghost btn-sm">Year</button>
+                                </div>
+                            </div>
+                            <div class="chart-placeholder">
+                                <div class="d-flex align-items-flex-end justify-content-around"
+                                    style="height:200px; align-items:flex-end;">
+                                    <div class="text-center">
+                                        <div
+                                            style="width:40px; height:60px; background:var(--clr-gradient); border-radius:6px 6px 0 0;">
+                                        </div><small class="text-muted-custom">Mon</small>
+                                    </div>
+                                    <div class="text-center">
+                                        <div
+                                            style="width:40px; height:100px; background:var(--clr-gradient); border-radius:6px 6px 0 0;">
+                                        </div><small class="text-muted-custom">Tue</small>
+                                    </div>
+                                    <div class="text-center">
+                                        <div
+                                            style="width:40px; height:80px; background:var(--clr-gradient); border-radius:6px 6px 0 0;">
+                                        </div><small class="text-muted-custom">Wed</small>
+                                    </div>
+                                    <div class="text-center">
+                                        <div
+                                            style="width:40px; height:140px; background:var(--clr-gradient); border-radius:6px 6px 0 0;">
+                                        </div><small class="text-muted-custom">Thu</small>
+                                    </div>
+                                    <div class="text-center">
+                                        <div
+                                            style="width:40px; height:120px; background:var(--clr-gradient); border-radius:6px 6px 0 0;">
+                                        </div><small class="text-muted-custom">Fri</small>
+                                    </div>
+                                    <div class="text-center">
+                                        <div
+                                            style="width:40px; height:180px; background:var(--clr-gradient); border-radius:6px 6px 0 0;">
+                                        </div><small class="text-muted-custom">Sat</small>
+                                    </div>
+                                    <div class="text-center">
+                                        <div
+                                            style="width:40px; height:150px; background:var(--clr-gradient); border-radius:6px 6px 0 0;">
+                                        </div><small class="text-muted-custom">Sun</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category Distribution -->
+                    <div class="col-lg-4">
+                        <div class="card-custom p-4 fade-in">
+                            <h5 class="mb-4"><i class="bi bi-pie-chart me-2 text-primary-custom"></i>Blog Distribution
+                            </h5>
+                            <div id="categoryDistribution">
+                                <!-- Rendered by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Recent Activity -->
+                    <div class="col-lg-6">
+                        <div class="card-custom p-4 fade-in">
+                            <h5 class="mb-4"><i class="bi bi-clock-history me-2 text-primary-custom"></i>Recent Activity
+                            </h5>
+                            <div id="adminActivity">
+                                <div class="d-flex gap-3 mb-3 pb-3 border-bottom">
+                                    <div class="btn-icon"
+                                        style="flex-shrink:0; background:rgba(46,204,113,0.1); color:var(--clr-success);">
+                                        <i class="bi bi-journal-plus"></i></div>
+                                    <div>
+                                        <p class="text-small mb-0"><strong>Ananya</strong> published "CSS Grid and
+                                            Flexbox"</p><small class="text-muted-custom">2 hours ago</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-3 mb-3 pb-3 border-bottom">
+                                    <div class="btn-icon"
+                                        style="flex-shrink:0; background:rgba(102,126,234,0.1); color:var(--clr-primary);">
+                                        <i class="bi bi-person-plus"></i></div>
+                                    <div>
+                                        <p class="text-small mb-0"><strong>New user</strong> registered: neha_devops</p>
+                                        <small class="text-muted-custom">5 hours ago</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-3 mb-3 pb-3 border-bottom">
+                                    <div class="btn-icon"
+                                        style="flex-shrink:0; background:rgba(243,156,18,0.1); color:var(--clr-warning);">
+                                        <i class="bi bi-flag"></i></div>
+                                    <div>
+                                        <p class="text-small mb-0"><strong>Comment flagged</strong> on "Machine Learning
+                                            with Python"</p><small class="text-muted-custom">1 day ago</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-3">
+                                    <div class="btn-icon"
+                                        style="flex-shrink:0; background:rgba(231,76,60,0.1); color:var(--clr-error);">
+                                        <i class="bi bi-person-x"></i></div>
+                                    <div>
+                                        <p class="text-small mb-0"><strong>User banned</strong>: arjun_ml (spam)</p>
+                                        <small class="text-muted-custom">2 days ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Posts -->
+                    <div class="col-lg-6">
+                        <div class="card-custom p-4 fade-in">
+                            <h5 class="mb-4"><i class="bi bi-trophy me-2 text-primary-custom"></i>Top Performing Posts
+                            </h5>
+                            <div id="topPosts">
+                                <!-- Rendered by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toastContainer" style="position:fixed; top:80px; right:20px; z-index:9999; width:360px;"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../models/UserModel.js"></script>
+    <script src="../../models/BlogModel.js"></script>
+    <script src="../../models/CategoryModel.js"></script>
+    <script src="../../models/CommentModel.js"></script>
+    <script src="../../controllers/MainController.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Stats
+            document.getElementById('totalBlogs').textContent = blogModel.getTotalCount();
+            document.getElementById('totalUsers').textContent = userModel.getTotalCount();
+            document.getElementById('totalViews').textContent = formatNumber(blogModel.getTotalViews());
+            document.getElementById('totalComments').textContent = commentModel.getTotalCount();
+
+            // Category distribution
+            const categories = categoryModel.getAll();
+            const totalBlogCount = categories.reduce((s, c) => s + c.blogCount, 0);
+            document.getElementById('categoryDistribution').innerHTML = categories.map(c => {
+                const pct = Math.round((c.blogCount / totalBlogCount) * 100);
+                return `
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="btn-icon" style="flex-shrink:0; background:${c.color}15; color:${c.color};"><i class="bi ${c.icon}"></i></div>
+            <div style="flex:1;">
+              <div class="d-flex justify-content-between text-small mb-1">
+                <span>${c.name}</span>
+                <span class="text-muted-custom">${c.blogCount} posts</span>
+              </div>
+              <div class="progress" style="height:6px; border-radius:3px;">
+                <div class="progress-bar" style="width:${pct}%; background:${c.color}; border-radius:3px;"></div>
+              </div>
+            </div>
+          </div>`;
+            }).join('');
+
+            // Top posts
+            const topPosts = blogModel.getMostViewed(5);
+            document.getElementById('topPosts').innerHTML = topPosts.map((b, i) => {
+                const author = userModel.getById(b.authorId);
+                return `
+          <div class="d-flex align-items-center gap-3 mb-3 ${i < topPosts.length - 1 ? 'pb-3 border-bottom' : ''}">
+            <span class="fw-bold text-muted-custom" style="font-size:18px; width:24px;">#${i + 1}</span>
+            <img src="${b.image}" style="width:48px; height:36px; object-fit:cover; border-radius:6px;" alt="">
+            <div style="flex:1; min-width:0;">
+              <h6 class="text-small mb-0" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${b.title}</h6>
+              <small class="text-muted-custom">${author ? author.name : 'Unknown'}</small>
+            </div>
+            <div class="text-end">
+              <div class="text-small fw-semibold">${formatNumber(b.views)}</div>
+              <small class="text-muted-custom">views</small>
+            </div>
+          </div>`;
+            }).join('');
+        });
+    </script>
+</body>
+
+</html>

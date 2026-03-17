@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BlogSphere — Discover insightful articles on technology, web development, design, and more. Join our community of passionate writers and readers.">
+  <title>BlogSphere — Home</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="assets/css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="mainNavbar">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <i class="bi bi-globe2"></i> BlogSphere
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="views/pages/blog-listing.html">Blogs</a></li>
+          <li class="nav-item"><a class="nav-link" href="views/pages/category.html">Categories</a></li>
+          <li class="nav-item"><a class="nav-link" href="views/pages/search-results.html">Search</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <a href="/user/login" class="btn btn-ghost">Login</a>
+          <a href="/user/signup" class="btn btn-gradient">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero-section" style="padding-top:130px;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <p class="text-caption mb-3" style="color:rgba(255,255,255,0.7);"><i class="bi bi-stars me-1"></i> Welcome to BlogSphere</p>
+          <h1 class="hero-title">Discover Stories That <br>Inspire & Educate</h1>
+          <p class="hero-subtitle">Explore a curated collection of insightful articles from passionate writers. From technology deep-dives to creative design, there's something for everyone.</p>
+          <div class="d-flex gap-3 flex-wrap" style="position:relative; z-index:1;">
+            <a href="views/pages/blog-listing.html" class="btn btn-light btn-lg px-4" style="border-radius:var(--radius-btn); font-weight:600;">
+              Explore Blogs <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+            <a href="/user/signup" class="btn btn-outline-light btn-lg px-4" style="border-radius:var(--radius-btn); font-weight:600;">
+              Start Writing
+            </a>
+          </div>
+          <div class="d-flex gap-4 mt-4 flex-wrap" style="position:relative; z-index:1;">
+            <div class="text-center">
+              <h4 class="mb-0" style="color:#fff;" id="heroStatBlogs">150+</h4>
+              <small style="opacity:0.7;">Articles</small>
+            </div>
+            <div class="text-center">
+              <h4 class="mb-0" style="color:#fff;" id="heroStatAuthors">50+</h4>
+              <small style="opacity:0.7;">Authors</small>
+            </div>
+            <div class="text-center">
+              <h4 class="mb-0" style="color:#fff;" id="heroStatReaders">10K+</h4>
+              <small style="opacity:0.7;">Readers</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 d-none d-lg-block text-end" style="position:relative; z-index:1;">
+          <div style="background:rgba(255,255,255,0.1); border-radius:20px; padding:30px; backdrop-filter:blur(10px);">
+            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=500&h=400&fit=crop" alt="Writing" style="border-radius:12px; width:100%; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURED BLOGS ===== -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <p class="text-caption text-primary-custom"><i class="bi bi-fire me-1"></i> Trending Now</p>
+        <h2>Featured Articles</h2>
+        <div class="section-divider"></div>
+        <p>Hand-picked articles that are making waves in the community</p>
+      </div>
+      <div class="row g-4" id="featuredBlogsContainer">
+        <!-- Rendered by JS -->
+      </div>
+      <div class="text-center mt-5">
+        <a href="views/pages/blog-listing.html" class="btn btn-outline-gradient">
+          View All Articles <i class="bi bi-arrow-right ms-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATEGORIES ===== -->
+  <section class="section-padding bg-surface">
+    <div class="container">
+      <div class="section-header">
+        <p class="text-caption text-primary-custom"><i class="bi bi-grid me-1"></i> Browse Topics</p>
+        <h2>Explore Categories</h2>
+        <div class="section-divider"></div>
+        <p>Find content that matches your interests</p>
+      </div>
+      <div class="row g-3 justify-content-center" id="categoriesContainer">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RECENT BLOGS ===== -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <p class="text-caption text-primary-custom"><i class="bi bi-clock me-1"></i> Fresh Content</p>
+        <h2>Latest Articles</h2>
+        <div class="section-divider"></div>
+        <p>Stay updated with the newest posts from our writers</p>
+      </div>
+      <div class="row g-4" id="recentBlogsContainer">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER ===== -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="newsletter-section">
+        <h3><i class="bi bi-envelope-heart me-2"></i>Stay in the Loop</h3>
+        <p>Get the best articles delivered straight to your inbox. No spam, only quality content.</p>
+        <div class="input-group">
+          <input type="email" class="form-control" placeholder="Enter your email address" id="newsletterEmail">
+          <button class="btn btn-dark" type="button" id="newsletterBtn">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer-section">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-brand"><i class="bi bi-globe2"></i> BlogSphere</div>
+          <p class="mb-3">A platform for curious minds. Read, write, and grow with a community of passionate authors and readers.</p>
+          <div class="footer-social">
+            <a href="#"><i class="bi bi-twitter-x"></i></a>
+            <a href="#"><i class="bi bi-github"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="views/pages/blog-listing.html">Blogs</a></li>
+            <li><a href="views/pages/category.html">Categories</a></li>
+            <li><a href="views/pages/search-results.html">Search</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h5>Account</h5>
+          <ul>
+            <li><a href="/user/login">Login</a></li>
+            <li><a href="/user/signup">Register</a></li>
+            <li><a href="views/pages/dashboard.html">Dashboard</a></li>
+            <li><a href="views/pages/profile-settings.html">Settings</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h5>Categories</h5>
+          <ul id="footerCategories">
+            <!-- Rendered by JS -->
+          </ul>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 BlogSphere. All rights reserved. Built with <i class="bi bi-heart-fill" style="color:var(--clr-accent);"></i></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" style="position:fixed; top:80px; right:20px; z-index:9999; width:360px;"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="models/UserModel.js"></script>
+  <script src="models/BlogModel.js"></script>
+  <script src="models/CategoryModel.js"></script>
+  <script src="models/CommentModel.js"></script>
+  <script src="controllers/MainController.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // ── Featured Blogs ──
+      const featured = blogModel.getFeatured();
+      const featuredContainer = document.getElementById('featuredBlogsContainer');
+      if (featuredContainer) {
+        featuredContainer.innerHTML = featured.map(b => createBlogCard(b)).join('');
+      }
+
+      // ── Categories ──
+      const categories = categoryModel.getAll();
+      const catContainer = document.getElementById('categoriesContainer');
+      if (catContainer) {
+        catContainer.innerHTML = categories.map(c => `
+          <div class="col-auto">
+            <a href="views/pages/category.html?id=${c.id}" class="category-chip">
+              <i class="bi ${c.icon}" style="color:${c.color}"></i>
+              ${c.name}
+              <span class="badge bg-light text-dark rounded-pill ms-1">${c.blogCount}</span>
+            </a>
+          </div>
+        `).join('');
+      }
+
+      // ── Recent Blogs ──
+      const recent = blogModel.getRecent(6);
+      const recentContainer = document.getElementById('recentBlogsContainer');
+      if (recentContainer) {
+        recentContainer.innerHTML = recent.map(b => createBlogCard(b)).join('');
+      }
+
+      // ── Footer Categories ──
+      const footerCat = document.getElementById('footerCategories');
+      if (footerCat) {
+        footerCat.innerHTML = categories.slice(0, 5).map(c => `<li><a href="views/pages/category.html?id=${c.id}">${c.name}</a></li>`).join('');
+      }
+
+      // ── Newsletter ──
+      const nlBtn = document.getElementById('newsletterBtn');
+      if (nlBtn) {
+        nlBtn.addEventListener('click', () => {
+          const email = document.getElementById('newsletterEmail').value;
+          if (email && isValidEmail(email)) {
+            showToast('Successfully subscribed! 🎉', 'success');
+            document.getElementById('newsletterEmail').value = '';
+          } else {
+            showToast('Please enter a valid email address', 'error');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
