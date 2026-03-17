@@ -1,7 +1,7 @@
 const adminPanelcontroller = {
 
     homePage(req, res){
-        return res.render('homePage.ejs')
+        return res.render('homePage')
     },
 
     adminDashboard(req, res) {
